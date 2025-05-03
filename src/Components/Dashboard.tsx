@@ -41,7 +41,7 @@ const habitList = [
 export default function Dashboard() {
   const [data, setData] = useState<HabitDay[]>(initialData);
 
-  const updateHabit = (index: number, habit: string, delta: number) => {
+  const updateHabit = (index: number, habit: keyof Omit<HabitDay, 'day'>, delta: number) => {
     setData((prev) => {
       const newData = [...prev];
       newData[index] = {
@@ -51,6 +51,7 @@ export default function Dashboard() {
       return newData;
     });
   };
+  
 
   return (
     <div className="min-h-screen bg-gray-900 text-white flex">
